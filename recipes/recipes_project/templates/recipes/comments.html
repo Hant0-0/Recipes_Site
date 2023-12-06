@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'recipes/style_2.css' %}">
+</head>
+<body>
+
+<div class="recipe_comments">
+    <div class="recipe_comments_title">
+        {{ recipe.title }}
+    </div>
+    <div class="recipe_comments_image">
+        <img src="{{ recipe.image.url }}" alt="">
+    </div>
+    <div class="recipe_comments_description">
+        {{ recipe.description }}
+    </div>
+
+</div>
+
+<div class="detail_comments">
+    {% for comment in comments %}
+        <div class="comments_title">
+            {{ comment }}
+        </div>
+        <div class="comments_body">
+            {{ comment.body }}
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+</body>
+</html>

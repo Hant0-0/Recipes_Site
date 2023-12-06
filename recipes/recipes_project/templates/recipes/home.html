@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'recipes/style_2.css' %}">
+</head>
+<body>
+{% block content %}
+
+
+<div class="home-container">
+    <div class="cont">
+        <div class="header">
+            <h1 class="title">Це сайт, де ви можете створювати публікації зі своїми рецептами <br>
+                та переглядати рецепти інших користувачів</h1>
+        </div>
+    </div>
+    <div class="container-category">
+        {% for cat in categories %}
+            <div class="category">
+                <div>
+                    <img src="{{ cat.image.url }}" alt="">
+                </div>
+                <div class="name-category">
+                    <p>{{ cat.name }}</p>
+                </div>
+                <div class="button-category">
+                    <a href="{% url 'recipes:home' cat.slug %}" class="button-link">Дивитися рецепти</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="recipes-container">
+        {% for recipe in recipes %}
+        <div class="recipe">
+            <div class="recipes">
+                <a href="{{ recipe.get_absolute_url }}" class="link">
+                    {{ recipe.title }}
+                </a>
+                <div class="descr">
+                    <li>{{ recipe.description|truncatechars:200 }}</li>
+                </div>
+                <img src="{{ recipe.image.url }}" class="image">
+                <hr>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% include 'recipes/paginator.html' with page=recipes %}
+
+
+</div>
+
+
+
+{% endblock %}
+
+
+
+</body>
+</html>

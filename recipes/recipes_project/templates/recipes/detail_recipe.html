@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'recipes/style_2.css' %}">
+</head>
+<body>
+
+{% block content %}
+
+<div class="container-recipe">
+    <div class="itself-recipe">
+        <div class="title-recipe">
+            <h1>{{ recipe.title }}</h1>
+        </div>
+        <div class="image-recipe">
+            <img src="{{ recipe.image.url }}">
+        </div>
+        <div class="recipe-info-down-photo">
+            <div class="recipe-autor">
+                <p>Автор</p>
+                <p>{{ recipe.author }}</p>
+            </div>
+            <div class="recipe-complexity">
+                <p>Складність</p>
+                <p>{{ recipe.complexity }}</p>
+            </div>
+            <div class="recipe-preparation_time">
+                {% if recipe.preparation_time.hour and recipe.preparation_time.minute %}
+                    <p>Підготовка</p>
+                    <p>{{ recipe.preparation_time.hour }} год {{ recipe.preparation_time.minute }} хв</p>
+                {% elif recipe.preparation_time.hour %}
+                    <p>Підготовка</p>
+                    <p>{{ recipe.preparation_time.hour }} год </p>
+                {% elif recipe.preparation_time.minute %}
+                    <p>Підготовка</p>
+                    <p>{{ recipe.preparation_time.minute }} хв</p>
+                {% endif %}
+            </div>
+            <div class="recipe-cooking_time">
+                {% if recipe.cooking_time.hour and recipe.cooking_time.minute %}
+                    <p>Приготування</p>
+                    <p>{{ recipe.cooking_time.hour }} год {{ recipe.cooking_time.minute }} хв</p>
+                {% elif recipe.cooking_time.hour %}
+                    <p>Приготування</p>
+                    <p>{{ recipe.cooking_time.hour }} год </p>
+                {% elif recipe.cooking_time.minute %}
+                    <p>Приготування</p>
+                    <p>{{ recipe.cooking_time.minute }} хв</p>
+                {% endif %}
+            </div>
+            <div class="recipe-full_time">
+                {% if full_time.hour and full_time.minute %}
+                    <p>Загальний час</p>
+                    <p>{{ full_time.hour }} год {{ full_time.minute }} хв</p>
+                {% elif full_time.hour %}
+                    <p>Загальний час</p>
+                    <p>{{ full_time.hour }} год </p>
+                {% elif full_time.minute %}
+                    <p>Загальний час</p>
+                    <p>{{ full_time.minute }} хв</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="method_cooking-recipe">
+
+        </div>
+    </div>
+    <div class="descrip_recipe">
+        <p>{{ recipe.description }}</p>
+    </div>
+    <div class="ingredients_recipe">
+        {% for ingredient in ingredients %}
+            <li>{{ ingredient }}</li>
+        {% endfor %}
+    </div>
+    <div class="instructions_cooking">
+        <ol>
+        {% for instruction in instructions_cooking %}
+            <li>{{ instruction }}</li>
+        {% endfor %}
+        </ol>
+    </div>
+
+    <div class="form-comment">
+        <h1>Залишити коментар</h1>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                {% for com in comment_form %}
+                    <div class="label-comment-form">
+                        {{ com.label }}
+                    </div>
+                    <div class="fields-comment-form">
+                        {{ com }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="button-comment">Залишити коментар</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}
+
+</body>
+</html>

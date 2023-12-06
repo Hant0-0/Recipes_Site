@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'recipes/base.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+<div class="create">
+    <h1>Change Recipe</h1>
+    <hr class="line">
+    <form method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for forms in form %}
+            <div class="s">
+                <div class="label_tag">
+                    {{ forms.label_tag }}
+                </div>
+                <div class="input">
+                    {{ forms }}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <button type="submit" class="button">Save</button>
+
+    </form>
+
+
+
+
+
+    <form method="POST" action="{% url 'deleterecipes' recipes.id %}">
+        {% csrf_token %}
+        <button type="submit" class="button">Delete</button>
+    </form>
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'recipes/style_2.css' %}">
+</head>
+<body>
+
+{% if user.is_authenticated %}
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="#">RecipeSite</a>
+    </div>
+    <ul class="nav-list">
+        <li><a href="{% url 'recipes:home' %}">Home</a></li>
+        <li><a href="{% url 'recipes:createrecipes' %}">Create Recipes</a></li>
+        <li>{{ user.username }}</li>
+        <li>
+            <form action="{% url 'logoutuser' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="button_log">Logout</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+{% else %}
+
+<div>
+<nav class="navbar">
+    <div class="logo">
+        <a href="#">RecipeSite</a>
+    </div>
+    <ul class="nav-list">
+        <li><a href="{% url 'register_user' %}">Sign up</a></li>
+        <li><a href="{% url 'login_user' %}">Sign in</a></li>
+    </ul>
+</nav>
+</div>
+
+
+{% endif %}
+
+{% block content %}{% endblock %}
+
+
+
+</body>
+</html>

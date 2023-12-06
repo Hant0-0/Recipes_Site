@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'recipes/style_2.css' %}">
+</head>
+<body>
+
+
+
+<h1>{{error}}</h1>
+
+<div class="register_l">
+    <h1>Реєстрація</h1>
+    <hr class="line">
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+
+        <div>
+            <div class="label">
+                {{ field.label_tag }}
+            </div>
+            <div class="field_input">
+                {{ field }}
+            </div>
+            <div class="help_text">
+                {{ field.help_text }}
+            </div>
+        </div>
+
+
+        {% endfor %}
+        <button type="submit" class="button">Register</button>
+    </form>
+</div>
+
+
+
+</body>
+</html>

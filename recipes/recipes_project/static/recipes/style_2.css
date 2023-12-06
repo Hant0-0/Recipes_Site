@@ -1,0 +1,521 @@
+/* Загальні стилі для всього сайту */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Стилі для кнопок */
+.button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #4caf50; /* Зелений колір */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #45a049; /* Темніший зелений колір при наведенні */
+}
+
+/* Стилі для заголовка */
+.header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.title {
+  margin-top: -310px;
+  color: #333;
+  font-size: 24px;
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+
+/* Стиль для форми входу */
+.register {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.register h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.register input {
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.register button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.register button:hover {
+  background-color: #45a049;
+}
+
+.register .error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+  .register {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Стиль для форми реєстрації */
+.register_l {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 414px;
+  margin: 0 auto;
+}
+
+.register_l h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register_l label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.register_l input {
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.register_l button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.register_l button:hover {
+  background-color: #45a049;
+}
+
+.register_l .error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+  .register_l {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Стилі для рецептів */
+
+.home-container {
+  margin-left: 125px;
+  margin-top: 50px;
+}
+
+.recipes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 35px;
+}
+
+
+.recipe {
+  background-color: #fff; /* Білий колір для фону рецепту */
+  padding: 20px;
+  border: 1px solid #ddd; /* Світло-сірий колір для рамки */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тінь для блоків */
+  transition: transform 0.2s;
+  width: 500px;
+  height: 440px;
+
+}
+
+.recipe:hover {
+  transform: translateY(-5px);
+}
+
+.link {
+  color: #4caf50; /* Зелений колір */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.descr {
+  color: #777;
+  margin-top: 5px;
+}
+
+.image {
+  width: 400px;
+  height: 250px;
+  display: block;
+  margin: 10px auto;
+  border: 1px solid #ddd; /* Світло-сірий колір для рамки зображень */
+  border-radius: 5px;
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+/* Стилі для сторінки створення рецептів */
+
+/* Стилі для заголовка */
+.create h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Стилі для форми створення рецепту */
+.create {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.create .s {
+  margin-bottom: 15px;
+}
+
+.create .label_tag {
+  font-weight: bold;
+}
+
+.create .input {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.create button {
+  background-color: #d35400; /* Оранжевий колір для кнопки */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.create button:hover {
+  background-color: #e74c3c; /* Темніший оранжевий колір при наведенні */
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+  .create {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/*Стилі для NAVBAR  */
+
+.navbar {
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo a {
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-list li {
+    margin-right: 20px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.nav-list li a:hover {
+    color: #ff6600;
+}
+
+.button_log {
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+}
+
+/*  СТИЛІ ДЛЯ СПИСКУ КРАЇНИ СТРАВИ */
+
+.cont {
+    margin-top: 320px;
+}
+
+
+/* -------СПИСОК КАТЕГОРІЙ--------- */
+.container-category{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category {
+  margin-left: 200px;
+}
+
+.category img {
+  width: 300px;
+  height: 220px;
+}
+
+.name-category, .button-category {
+  text-align: center;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white; /* Колір кнопки */
+  color: #22ff22; /* Колір тексту */
+  border-color: #22ff22;;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s; /* Анімація зміни кольору при наведенні */
+}
+
+.button-link:hover {
+  color: white;
+  background-color: #22ff22;
+}
+
+/* --------------------------------*/
+.container-recipe {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.title-recipe {
+  margin-bottom: -20px;
+  font-size: 20px;
+  font-family: "Droid Sans";
+  color: #f55545;
+}
+
+.image-recipe img {
+  width: 1000px;
+  height: 650px;
+  border-radius: 10px;
+}
+
+.method_cooking-recipe {
+  line-height: 31px;
+  font-size: 18px;
+  font-style: inherit;
+  font-weight: inherit;
+  color: #3c3c3c;
+}
+
+.recipe-info-down-photo {
+  display: flex;
+  line-height: 15px;
+  font-size: 18px;
+  font-style: inherit;
+  font-weight: inherit;
+  color: #3c3c3c;
+}
+
+.recipe-complexity, .recipe-cooking_time, .recipe-full_time {
+  margin-left: 40px;
+}
+
+.recipe-preparation_time {
+  margin-left: 400px;
+}
+
+.icon-time img {
+  width: 70px;
+  height: 50px;
+}
+
+.descrip_recipe {
+  margin-top: 20px;
+}
+
+.ingredients_recipe {
+  margin-top: 40px;
+  font-size: 20px;
+  font-family: inherit;
+}
+
+
+
+.instructions_cooking {
+  margin-top: 40px;
+}
+
+.instructions_cooking ol {
+  list-style-type: none;
+  counter-reset: num;
+  margin: 0 0 0 45px;
+  padding: 5px 0 5px 0;
+  font-size: 18px;
+  font-family: inherit;
+}
+
+.instructions_cooking ol li {
+  position: relative;
+  margin: 15px 0 0 -20px;
+  padding: 0 0 10px 0;
+  line-height: 1.4;
+
+}
+
+.instructions_cooking ol li:before {
+  content: counter(num);
+  counter-increment: num;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: -38px;
+  width: 28px;
+  height: 28px;
+  background: #00bff3;
+  color: #fff;
+  text-align: center;
+  line-height: 28px;
+  font-size: 18px;
+}
+
+
+.paginator {
+  margin-top: 50px;
+  margin-left: 520px;
+  display: inline-block;
+}
+
+.paginator a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.paginator a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.paginator a:hover:not(.active) {background-color: #ddd;}
+
+
+/*       COMMENTS         */
+
+.form-comment {
+  margin-top: 50px;
+}
+
+textarea#id_body {
+  width: 1100px;
+}
+
+.label-comment-form {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.button-comment {
+  margin-top: 20px;
+}
+
+.recipe_comments_image img {
+  width: 400px;
+  height: 300px;
+}
