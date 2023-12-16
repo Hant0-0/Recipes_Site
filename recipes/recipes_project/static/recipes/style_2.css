@@ -365,7 +365,7 @@ body {
   padding: 10px 20px;
   background-color: white; /* Колір кнопки */
   color: #22ff22; /* Колір тексту */
-  border-color: #22ff22;;
+  border-color: #22ff22;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s; /* Анімація зміни кольору при наведенні */
@@ -425,6 +425,20 @@ body {
   height: 50px;
 }
 
+.link_move_to_comments {
+  width: 230px;
+  height: 30px;
+  background-color: #00bff3;
+  padding-left: 50px;
+  padding-top: 15px;
+  border-radius: 4px;
+}
+
+.link_move_to_comments a {
+  text-decoration: none;
+  color: white;
+}
+
 .descrip_recipe {
   margin-top: 20px;
 }
@@ -434,7 +448,6 @@ body {
   font-size: 20px;
   font-family: inherit;
 }
-
 
 
 .instructions_cooking {
@@ -515,7 +528,61 @@ textarea#id_body {
   margin-top: 20px;
 }
 
+.comments_container {
+  margin-left: 20px;
+}
+
+.comments_title {
+  font-size: 14px;
+  font-family: 'Didact Gothic', sans-serif;
+
+}
+
+.comments_body {
+  font-size: 17px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.recipe_comments_title {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.recipe_comments_published {
+  color: #ababab;
+}
+
 .recipe_comments_image img {
   width: 400px;
-  height: 300px;
+  height: 280px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.comments {
+  width: 450px;
+  background-color: #d7d6d6;
+  margin-top: 20px;
+  padding: 10px 0 10px 5px;
+
+}
+
+.comments_title {
+  margin-top: 5px;
+}
+
+.link_comeback_with_comments {
+  margin-left: 50px;
+  padding-top: 5px;
+  padding-left: 25px;
+  margin-top: 20px;
+  width: 230px;
+  height: 30px;
+  border-radius: 4px;
+  background-color: #22ff22;;
+}
+
+.link_comeback_with_comments a {
+  text-decoration: none;
+  color: white;
 }

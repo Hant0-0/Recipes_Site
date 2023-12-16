@@ -87,6 +87,9 @@
     </div>
 
     <div class="form-comment">
+        <div class="link_move_to_comments">
+            <a href="{% url 'recipes:comments' recipe.id %}">Переглянути коментарі</a>
+        </div>
         <h1>Залишити коментар</h1>
         <div>
             <form method="POST">

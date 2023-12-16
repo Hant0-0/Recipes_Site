@@ -6,32 +6,47 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'recipes/style_2.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="recipe_comments">
-    <div class="recipe_comments_title">
-        {{ recipe.title }}
+<div class="comments_container">
+    <div class="recipe_comments">
+        <div class="recipe_comments_title">
+            <h2>{{ recipe.title }}</h2>
+        </div>
+        <div class="recipe_comments_published">
+            <p>Опубліковано {{recipe.published}} автором {{recipe.author}}</p>
+        </div>
+        <div class="recipe_comments_image">
+            <img src="{{ recipe.image.url }}" alt="">
+        </div>
+        <div class="link_comeback_with_comments">
+            <a href="{{ recipe.get_absolute_url }}">Повернутися до рецепту</a>
+        </div>
     </div>
-    <div class="recipe_comments_image">
-        <img src="{{ recipe.image.url }}" alt="">
+    <div class="detail_comments">
+        <div class="comments_count">
+            {% with comments.count as total_comments %}
+                <h2>Кількість коментарів: {{ total_comments }}</h2>
+            {% endwith %}
+        </div>
+        {% for comment in comments %}
+        <div class="comments">
+            <div class="comments_title">
+                <p>Коментар {{ forloop.counter }} залишиний {{ comment.name }} {{ comment.created }}</p>
+            </div>
+            <div class="comments_body">
+                <p>{{ comment.body }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    <div class="recipe_comments_description">
-        {{ recipe.description }}
-    </div>
-
 </div>
 
-<div class="detail_comments">
-    {% for comment in comments %}
-        <div class="comments_title">
-            {{ comment }}
-        </div>
-        <div class="comments_body">
-            {{ comment.body }}
-        </div>
-    {% endfor %}
-</div>
 
 
 

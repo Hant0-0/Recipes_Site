@@ -29,6 +29,8 @@ class RecipesAPI(APIView):
         recipes = Recipes.objects.all()
         serializer = RecipeSerializer(recipes, many=True).data
         return Response(serializer)
+
+    
 # ---------------------#
 
 
@@ -115,24 +117,30 @@ def change_recipes(request, rec_pk):
 
 
 def detail_recipe(request, year, month, day, recipe_slug):
-    recipe = get_object_or_404(Recipes, slug=recipe_slug,
+    if request.method == 'POST':
+        recipe = get_object_or_404(Recipes, slug=recipe_slug,
                                published__year=year,
                                published__month=month,
                                published__day=day)
-    full_time = recipe.full_time
-    ingredients = recipe.ingredients.split('\n')
-    instructions_cooking = recipe.instructions_cooking.split('\n')
-
-    comment_form = CommentsForm()
-
-    if request.method == 'POST':
         form = CommentsForm(data=request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.recipe = recipe
             comment.save()
 
-    return render(request, 'recipes/detail_recipe.html', {'recipe': recipe, 'full_time': full_time,
+            v_comment = Comments.objects.filter(recipe=recipe)
+            return render(request, 'recipes/comments.html', {'comments': v_comment, 'recipe': recipe})
+    else:
+        recipe = get_object_or_404(Recipes, slug=recipe_slug,
+                               published__year=year,
+                               published__month=month,
+                               published__day=day)
+        full_time = recipe.full_time
+        ingredients = recipe.ingredients.split('\n')
+        instructions_cooking = recipe.instructions_cooking.split('\n')
+
+        comment_form = CommentsForm()
+        return render(request, 'recipes/detail_recipe.html', {'recipe': recipe, 'full_time': full_time,
                                                           'ingredients': ingredients,
                                                           'instructions_cooking': instructions_cooking,
                                                           'comment_form': comment_form})
@@ -149,3 +157,4 @@ def comments(request, recipe_id):
     recipe = get_object_or_404(Recipes, id=recipe_id)
     comment = Comments.objects.filter(recipe=recipe_id)
     return render(request, 'recipes/comments.html', {'comments': comment, 'recipe': recipe})
+
