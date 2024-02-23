@@ -15,13 +15,13 @@
         <a href="{% url 'recipes:home' %}">RecipeSite</a>
     </div>
     <ul class="nav-list">
-        <li><a href="{% url 'recipes:home' %}">Home</a></li>
-        <li><a href="{% url 'recipes:createrecipes' %}">Create Recipes</a></li>
+        <li><a href="{% url 'recipes:home' %}">Головна</a></li>
+        <li><a href="{% url 'recipes:createrecipes' %}">Створити рецепт</a></li>
         <li>{{ user.username }}</li>
         <li>
             <form action="{% url 'logoutuser' %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="button_log">Logout</button>
+                <button type="submit" class="button_log">Вихід</button>
             </form>
         </li>
     </ul>

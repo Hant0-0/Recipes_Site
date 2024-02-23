@@ -1,9 +1,10 @@
 import datetime
-
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.text import slugify
+from googletrans import Translator
 
 
 class Category(models.Model):
@@ -18,6 +19,12 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        translater = Translator()
+        translation = translater.translate(str(self.name), 'en')
+        self.slug = slugify(translation.text, 'en')
+        super(Category, self).save(*args, **kwargs)
 
 
 class Recipes(models.Model):
@@ -36,9 +43,7 @@ class Recipes(models.Model):
     preparation_time = models.TimeField(blank=True, verbose_name="Час підготовки")
     cooking_time = models.TimeField(blank=True, verbose_name="Час приготування")
     image = models.ImageField(upload_to='images', verbose_name="Фото страви")
-
     published = models.DateTimeField(default=timezone.now())
-
     create_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата і час створення")
     update_at = models.DateTimeField(auto_now=True, verbose_name="Дата і час оновлення")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipe_post')
@@ -73,6 +78,12 @@ class Recipes(models.Model):
                                                       self.published.month,
                                                       self.published.day,
                                                       self.slug])
+
+    def save(self, *args, **kwargs):
+        translater = Translator()
+        translation = translater.translate(str(self.title), 'en')
+        self.slug = slugify(translation.text, 'en')
+        super(Recipes, self).save(*args, **kwargs)
 
 
 class Comments(models.Model):

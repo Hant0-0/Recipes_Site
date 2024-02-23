@@ -10,7 +10,6 @@ class CategoriesSerializer(serializers.ModelSerializer):
 
 
 class RecipeSerializer(serializers.ModelSerializer):
-    title = serializers.CharField()
     total_time = serializers.SerializerMethodField()
 
     def get_total_time(self, instance):
@@ -24,10 +23,12 @@ class RecipeSerializer(serializers.ModelSerializer):
         full_time = datetime.time(sum_time//3600, (sum_time%3600)//60, sum_time%60)
         return full_time
 
+
     class Meta:
         model = Recipes
-        fields = ['title', 'description', 'ingredients', 'instructions_cooking', 'complexity', 'preparation_time',
-                  'cooking_time', 'total_time', 'image', 'create_at', 'update_at', 'author', 'category']
+        fields = ['title', 'description', 'ingredients', 'instructions_cooking', 'complexity',
+                  'preparation_time', 'cooking_time', 'total_time', 'image', 'create_at', 'update_at', 'author',
+                  'category']
 
 
 

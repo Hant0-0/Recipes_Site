@@ -1,12 +1,11 @@
-import datetime
-
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import authenticate
-from rest_framework.generics import ListAPIView
+from rest_framework import status
+from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -17,21 +16,78 @@ from .serializers import RecipeSerializer, CategoriesSerializer
 
 # ---------- API --------#
 
-class CategoriesAPI(APIView):
-    def get(self, request):
-        categories = Category.objects.all()
-        serializer = CategoriesSerializer(categories, many=True).data
-        return Response(serializer)
+class CategoriesAPI(ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategoriesSerializer
+
+
+class CategoriDetailAPI(APIView):
+    queryset = Category.objects.all()
+    serializer_class = CategoriesSerializer
+
+    def get(self,request, cat_id):
+        category = get_object_or_404(Category, id=cat_id)
+        serializer = CategoriesSerializer(category).data
+        return Response(serializer, status=status.HTTP_200_OK)
+
+    def put(self, request, cat_id):
+        recipe = get_object_or_404(Recipes, id=cat_id)
+        serializer = CategoriesSerializer(recipe, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'detail': 'Дані успішно збережені'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, cat_id):
+        category = get_object_or_404(Category, id=cat_id)
+        category.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class RecipesAPI(APIView):
+    queryset = Recipes.objects.all()
+    serializer_class = RecipeSerializer
+
     def get(self, request):
         recipes = Recipes.objects.all()
         serializer = RecipeSerializer(recipes, many=True).data
         return Response(serializer)
 
+    def post(self, request):
+        serializer = RecipeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,  status=status.HTTP_200_OK)
+        else:
+            return Response({'detail': 'Дані не збережені'})
+
+
+class RecipesAPIDetail(APIView):
+    queryset = Recipes.objects.all()
+    serializer_class = RecipeSerializer
+
+    def get(self, request, recipe_id):
+        recipe = get_object_or_404(Recipes, id=recipe_id)
+        serializer = RecipeSerializer(recipe).data
+        return Response(serializer)
+
+    def put(self, request, recipe_id):
+        recipe = get_object_or_404(Recipes, id=recipe_id)
+        serializer = RecipeSerializer(recipe, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, recipe_id):
+        recipe = get_object_or_404(Recipes, id=recipe_id)
+        recipe.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
     
-# ---------------------#
+# -------------------------------------#
 
 
 def home(request, category_slug=None):
@@ -102,7 +158,7 @@ def create_recipes(request):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect('current_recipes')
+            return redirect('recipes:current_recipes')
 
 
 def change_recipes(request, rec_pk):

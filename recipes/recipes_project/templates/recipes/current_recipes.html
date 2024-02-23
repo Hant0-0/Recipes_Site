@@ -15,7 +15,7 @@
 {% for recipe in recipes %}
     <div class="recipe">
         <div class="recipes">
-            <a href="{% url 'viewsrecipes' recipe.id %}" class="link">
+            <a href="{{ recipes.get_absolute_url }}" class="link">
                 {{ recipe.title }}
             </a>
             <div class="descr">

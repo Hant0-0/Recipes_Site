@@ -9,13 +9,13 @@
 </head>
 <body>
 {% block content %}
-<div class="create">
-    <h1>Create Recipe</h1>
+<div class="create_recipe_container">
+    <h1>Створити рецепт</h1>
     <hr class="line">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% for forms in form %}
-            <div class="s">
+            <div class="create_recipe_inner">
                 <div class="label_tag">
                     {{ forms.label_tag }}
                 </div>
