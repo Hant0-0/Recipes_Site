@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-*lf^y=$n-hw*^vsdsadasdqq15oq$5y79qcs^^x-eiu%0u&66t
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 STATIC_DIR = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIR = [STATIC_DIR]
